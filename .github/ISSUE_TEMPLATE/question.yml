@@ -1,0 +1,39 @@
+name: Question
+description: Ask a question about a Poltrea Assets product
+title: "[Question] "
+labels:
+  - question
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for using Poltrea Assets.
+        Please select the relevant product and describe your question below.
+
+  - type: dropdown
+    id: product
+    attributes:
+      label: Product
+      description: Which product is your question about?
+      options:
+        - Grassland & Dirt Pack
+        - Desert & Sand Pack
+        - Forest & Jungle Pack
+        - Snow & Frozen Pack
+        - Low-poly Terrain Textures Bundle
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: How can we help?
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: Add screenshots or any other information that may help us answer your question.
