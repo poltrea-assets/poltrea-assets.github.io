@@ -1,0 +1,67 @@
+name: Bug Report
+description: Report a problem with a Poltrea Assets product
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem with Poltrea Assets.
+        Please provide as much detail as possible so we can investigate efficiently.
+
+  - type: dropdown
+    id: product
+    attributes:
+      label: Product
+      description: Which product are you using?
+      options:
+        - Grassland & Dirt Pack
+        - Desert & Sand Pack
+        - Forest & Jungle Pack
+        - Snow & Frozen Pack
+        - Low-poly Terrain Textures Bundle
+    validations:
+      required: true
+
+  - type: input
+    id: unity-version
+    attributes:
+      label: Unity Version
+      placeholder: "e.g. Unity 6.0"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: render-pipeline
+    attributes:
+      label: Render Pipeline
+      options:
+        - URP
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe what happened and what you expected to happen.
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to Reproduce
+      description: Please list the steps needed to reproduce the problem.
+      placeholder: |
+        1. ...
+        2. ...
+        3. ...
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional Information
+      description: Add screenshots, console errors, logs, or any other useful information.
