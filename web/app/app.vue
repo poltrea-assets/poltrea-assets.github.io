@@ -2,7 +2,7 @@
 const menuOpen = ref(false)
 
 const assets = [
-  { title: 'Grassland & Dirt Pack', textures: '69', image: '/images/grassland-dirt.png', tone: 'olive' },
+  { title: 'Grassland & Dirt Pack', textures: '69', image: '/images/grassland-dirt.png', tone: 'olive', url: 'https://assetstore.unity.com/packages/slug/409770', status: 'Available now' },
   { title: 'Desert & Sand Pack', textures: '37', image: '/images/desert-sand.png', tone: 'sand' },
   { title: 'Forest & Jungle Pack', textures: '47', image: '/images/forest-jungle.png', tone: 'forest' },
   { title: 'Snow & Frozen Pack', textures: '37', image: '/images/snow-frozen.png', tone: 'ice' },
@@ -49,15 +49,25 @@ const responsiveSrcset = (path: string) => {
           <p>Practical terrain texture packs for Unity projects — designed to give stylized scenes a cohesive, finished feel.</p>
         </div>
         <div class="asset-grid">
-          <article v-for="asset in assets" :key="asset.title" class="asset-card" :class="[{ featured: asset.featured }, asset.tone]">
+          <component
+            :is="asset.url ? 'a' : 'article'"
+            v-for="asset in assets"
+            :key="asset.title"
+            class="asset-card"
+            :class="[{ featured: asset.featured }, asset.tone]"
+            :href="asset.url"
+            :target="asset.url ? '_blank' : undefined"
+            :rel="asset.url ? 'noopener noreferrer' : undefined"
+            :aria-label="asset.url ? `View ${asset.title} on the Unity Asset Store` : undefined"
+          >
             <div class="asset-image-wrap"><picture><source type="image/webp" :srcset="responsiveSrcset(asset.image)" :sizes="asset.featured ? '100vw' : '(max-width: 720px) 100vw, 50vw'"><img :src="asset.image" :alt="`${asset.title} preview`" width="3840" height="2160" loading="lazy" decoding="async"></picture></div>
             <div class="asset-details">
               <p class="asset-index">{{ String(assets.indexOf(asset) + 1).padStart(2, '0') }}</p>
               <h3>{{ asset.title }}</h3>
               <p>{{ asset.textures }} Textures</p>
-              <span class="coming-soon">Coming soon</span>
+              <span class="coming-soon">{{ asset.status ?? 'Coming soon' }}</span>
             </div>
-          </article>
+          </component>
         </div>
       </section>
 
