@@ -10,6 +10,10 @@ const assets = [
 ]
 
 const closeMenu = () => { menuOpen.value = false }
+const responsiveSrcset = (path: string) => {
+  const base = path.replace('.png', '')
+  return [768, 1280, 1920, 2560].map((width) => `${base}-${width}.webp ${width}w`).join(', ')
+}
 </script>
 
 <template>
@@ -28,7 +32,7 @@ const closeMenu = () => { menuOpen.value = false }
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
-        <img class="hero-image" src="/images/hero.png" alt="Stylized Unity terrain environment with low-poly vegetation" width="3840" height="2160">
+        <picture class="hero-image"><source type="image/webp" :srcset="responsiveSrcset('/images/hero.png')" sizes="100vw"><img src="/images/hero.png" alt="Stylized Unity terrain environment with low-poly vegetation" width="3840" height="2160" fetchpriority="high" decoding="async"></picture>
         <div class="hero-shade" />
         <div class="hero-content">
           <p class="eyebrow light">POLTREA ASSETS</p>
@@ -46,7 +50,7 @@ const closeMenu = () => { menuOpen.value = false }
         </div>
         <div class="asset-grid">
           <article v-for="asset in assets" :key="asset.title" class="asset-card" :class="[{ featured: asset.featured }, asset.tone]">
-            <div class="asset-image-wrap"><img :src="asset.image" :alt="`${asset.title} preview`" width="3840" height="2160" loading="lazy"></div>
+            <div class="asset-image-wrap"><picture><source type="image/webp" :srcset="responsiveSrcset(asset.image)" :sizes="asset.featured ? '100vw' : '(max-width: 720px) 100vw, 50vw'"><img :src="asset.image" :alt="`${asset.title} preview`" width="3840" height="2160" loading="lazy" decoding="async"></picture></div>
             <div class="asset-details">
               <p class="asset-index">{{ String(assets.indexOf(asset) + 1).padStart(2, '0') }}</p>
               <h3>{{ asset.title }}</h3>
@@ -65,7 +69,7 @@ const closeMenu = () => { menuOpen.value = false }
       </section>
 
       <section id="about" class="about-section" aria-labelledby="about-title">
-        <div class="about-image-wrap"><img src="/images/about.png" alt="Stylized low-poly forest environment for Unity" width="3840" height="2160" loading="lazy"></div>
+        <div class="about-image-wrap"><picture><source type="image/webp" :srcset="responsiveSrcset('/images/about.png')" sizes="(max-width: 720px) 100vw, 54vw"><img src="/images/about.png" alt="Stylized low-poly forest environment for Unity" width="3840" height="2160" loading="lazy" decoding="async"></picture></div>
         <div class="about-content"><p class="eyebrow">02 / ABOUT</p><h2 id="about-title">Made for worlds<br>with character.</h2><p>Poltrea Assets creates stylized low-poly assets for game development.</p><p>Our focus is on environment assets designed to help developers build distinctive stylized worlds — from terrain textures to vegetation and 3D props.</p></div>
       </section>
 
