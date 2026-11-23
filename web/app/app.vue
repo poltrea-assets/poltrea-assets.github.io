@@ -3,9 +3,9 @@ const menuOpen = ref(false)
 
 const assets = [
   { title: 'Grassland & Dirt Pack', textures: '69', image: '/images/grassland-dirt.png', tone: 'olive', url: 'https://assetstore.unity.com/packages/slug/409770', status: 'Available now' },
-  { title: 'Desert & Sand Pack', textures: '37', image: '/images/desert-sand.png', tone: 'sand' },
-  { title: 'Forest & Jungle Pack', textures: '47', image: '/images/forest-jungle.png', tone: 'forest' },
-  { title: 'Snow & Frozen Pack', textures: '37', image: '/images/snow-frozen.png', tone: 'ice' },
+  { title: 'Desert & Sand Pack', textures: '37', image: '/images/desert-sand.png', tone: 'sand', url: 'https://assetstore.unity.com/packages/slug/416238', status: 'Available now' },
+  { title: 'Forest & Jungle Pack', textures: '47', image: '/images/forest-jungle.png', tone: 'forest', url: 'https://assetstore.unity.com/packages/slug/416598', status: 'Available now' },
+  { title: 'Snow & Frozen Pack', textures: '37', image: '/images/snow-frozen.png', tone: 'ice', url: 'https://assetstore.unity.com/packages/slug/416614', status: 'Available now' },
   { title: 'Complete Terrain Texture Bundle', textures: '190', image: '/images/bundle.png', tone: 'bundle', featured: true },
 ]
 
